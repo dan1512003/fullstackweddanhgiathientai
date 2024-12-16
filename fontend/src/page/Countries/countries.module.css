@@ -1,0 +1,91 @@
+.containerContact{
+    background-color: aliceblue; 
+  
+}
+
+.border{
+
+    border-bottom: 1px solid red;
+    height:2px ;
+  
+}
+
+.main{
+
+    display: grid;
+    /* background-color: aqua; */
+    grid-template-columns: 2fr 8fr 2fr;
+}
+.product{
+  
+
+      
+        display:block;
+   
+   
+}
+.active{
+
+    height: 20px;
+    width: 5px;
+    background-color: red;
+
+   
+ }
+ .cateLiAbout{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+ }
+ .cateUlAbout{
+   display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+ }
+ .titleCate{
+    display: flex;
+  
+ }
+ .activeTitleCate{
+    height: 20px;
+    width: 5px;
+    background-color: red;
+    margin-top: 22px;
+ }
+ .liContact{
+    color: black;
+    font-weight: bold;
+ }
+ .ulSelectAlphaBet{
+    display: flex;
+    flex-wrap: wrap;
+
+ }
+ .liSelectAlphaBet{
+    width: 35px;
+     justify-content: center;
+     display: flex;
+     background-color: #E6ECEF;
+ }
+
+
+ .containerMain2{
+       display: grid;
+       gap: 5px;
+       grid-template-columns: 1fr 1fr 1fr 1fr;
+ }
+ .pValueAlphabet{
+   border-bottom: 1px solid black;
+   font-weight: bold;
+ }
+ .Countries{
+   text-decoration: underline;
+ }
+ .activeElement{
+   border: 2px solid#DDDFE1 ;
+ }
+ .provincealpha{
+   display: block;
+ }

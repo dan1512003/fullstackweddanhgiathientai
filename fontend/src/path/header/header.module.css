@@ -1,0 +1,119 @@
+.containerHeader{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10;
+    color: black;
+}
+.bottom{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    justify-content: center;  
+    background-color:  #F5F7F9
+}
+.mid{
+   @media (max-width: 720px) {
+      display: none;
+      }
+}
+.mid2{
+   @media (min-width: 720px) {
+      display: none;
+      }
+}
+button{
+
+   
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+.iconSubmitSearch{
+   height: 20px;
+ }
+
+ form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+ }
+ input{
+    width: 80%;
+    height: 30px;
+ }
+ .buttonSubmitSearch{
+    height:36px;
+ }
+ .formSearchMenu{
+    background-color:#E6ECEF
+    
+ }
+
+
+
+ .navbarMenu{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+
+}
+.ulMenu{
+   display: flex;
+   gap: 10px;
+   justify-content: space-evenly; 
+}
+
+.liMenu{
+   display: flex;
+   font-size: 18px;
+   font-weight: bold;
+   margin-top: 5px;
+   position: relative;
+   margin-left: 5px;
+}
+.buttonSearch{
+   font-size: 25px;
+   font-weight: bold;
+   font-family: 'Times New Roman';
+   background-color: white;
+}
+.iconOnClickSearch{
+  height: 20px;
+}
+.navLinkMenu{
+   color:black;
+  font-family: 'Times New Roman';
+  font-weight: bold;
+}
+.ulChildMenu{
+   background-color: aqua;
+   position:absolute;
+   z-index: 1;
+   right: 0;
+   width: 100%;
+   margin-top: 40px;
+}
+.cateMenu{
+display: block;
+
+}
+.butonMenu{
+  display: flex;
+  font-size: 20px;
+   margin-top: 3px;
+}
+.iconfaCareUp{
+  margin-top: 4px;
+}
+.active{
+
+   height: 20px;
+   width: 5px;
+   background-color: red;
+}

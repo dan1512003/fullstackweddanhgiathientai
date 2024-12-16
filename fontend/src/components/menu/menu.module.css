@@ -1,0 +1,50 @@
+.navbarMenu{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+ }
+
+ .ulMenu{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly; 
+    flex-wrap: wrap;
+ }
+ .active {
+    color: blue;
+    height:8px;
+    background-color: aqua;
+    position: relative;
+   bottom: -25px;
+  
+}
+.liMenu{
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 6px;
+    display: block;
+   
+ 
+ }
+ .buttonSearch{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+    background-color: white;
+ }
+ .iconOnClickSearch{
+   height: 20px;
+ }
+ .navLinkMenu{
+   color:black;
+   font-family: 'Times New Roman';
+   font-weight: bold;
+   z-index: 1;
+
+ }
+ .bar{
+    background-color:#E6ECEF;
+    height:8px;
+ }

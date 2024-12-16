@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+ <div style="Height: 100vh"class="container d-flex justify-content-center align-items-center">
+    <form id="formRegister"style="width: 400px ;">
+        <h3 class="text-center">Đăng ký tài khoản</h3>
+        <div class="mb-3">
+            <label for="userName" class="form-label">Đăng ký tên tài khoản</label>
+            <input type="text" class="form-control" id="userName" placeholder="Tên tài khoản">
+            <div id="userNameError"style="color: red; display:none"> Tên không được để trống</div>
+          </div>
+          <div class="mb-3">
+            <label for="Email" class="form-label">Email </label>
+            <input type="text" class="form-control" id="Email" placeholder="Nhập Email">
+            <div id="EmailError"style="color: red;display:none"> Email không được để trống</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu </label>
+            <input type="text" class="form-control" id="password" placeholder="Nhập mật khẩu">
+            <div id="passwordError"style="color: red;display:none"> Mật khẩu không được để trống</div>
+          </div>
+          <div class="mb-3">
+            <label for="rePassword" class="form-label">Nhập lại Mật khẩu </label>
+            <input type="text" class="form-control" id="rePassword" placeholder="Nhập mật khẩu">
+            <div id="rePasswordError"style="color: red;display:none"> Mật khẩu nhập lại không được để trống</div>
+          </div>
+        
+        
+          <div>
+            <button  type="submit" style="width: 100%" class="btn btn-primary">Đăng ký</button>
+          </div>
+          <p class="text-center mt-2">
+            Bạn đã có tài khoản?<a href="./login.html">Đăng nhập</a>
+          </p>
+    </form>
+ </div>
+
+    <!--Script -->
+    <script src="../js/register.js"></script>
+</body>
+</html>

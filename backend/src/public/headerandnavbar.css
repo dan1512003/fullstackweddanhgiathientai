@@ -1,0 +1,139 @@
+
+#Header{
+    background-color: black;
+    color: white;
+    height: 50px;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+}
+#iconHome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+   
+}
+#user{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 2px;
+}
+.buttonup{
+display: block;
+background-color: black;
+color: white;
+border: none;
+
+}
+
+.ulSigninAndSignout{
+margin: 0px;
+padding: 0px;
+list-style-type: none;
+position: absolute;
+z-index: 1;
+background-color:black;
+right: 8px;
+top:58px;
+width: 150px;
+border:2px solid #B3B9BF ;
+border-radius: 10px 10px 10px 10px;
+display: none;
+
+}
+#down{
+display: none;
+}
+navSigninAndSignout{
+position: relative;
+}
+.ulSigninAndSignout li:last-child{
+border-bottom: none;
+
+}
+
+.liSigninAndSignout{
+padding-top: 10px;
+padding-bottom: 10px;
+border-bottom: 1px solid #B3B9BF;
+}
+.Main{
+display: grid;
+grid-template-columns:2fr 10fr ;
+
+}
+#mainContainer{
+    background-color: rgba(0, 0, 0, 0.877);
+
+}
+#crateaMainContainer{
+    height: 100vh;
+    background-color: white;
+}
+#navbar{
+    height: 100vh;
+    color: #ffffff;
+    display: block;
+  
+   
+}
+#iconDashBoard{
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ margin: 0;
+ padding: 0;
+
+}
+#navCate{
+
+ margin: 0;
+ padding: 0;
+}
+.ulCate{
+display: block;
+margin: 0px;
+padding: 0px;
+}
+.liCate{
+display: flex;
+align-items: center;
+gap: 10px;
+padding-top: 15px;
+padding-bottom: 15px;
+}
+
+.liCate:hover{
+background-color: red;
+
+}
+.aCate{
+    text-decoration: none;
+    color: white;
+}
+.ulChildPage{
+background-color: rgba(0, 0, 0, 0.432);
+margin: 0;
+padding: 0;
+display: none;
+}
+.liChildPage{
+justify-content: center;
+display: flex;
+padding-top: 15px;
+padding-bottom: 15px;
+}
+.liChildPage:hover{
+background-color: red;
+
+}
+#downLiCate{
+display: none;
+}
+#rightLiCate{
+    padding-top: 5px;
+
+}

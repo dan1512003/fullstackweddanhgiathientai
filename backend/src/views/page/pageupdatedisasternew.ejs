@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <link rel="stylesheet" href="/public/headerandnavbar.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/page/pagepostdisasternew.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="/public/headerandnavbar.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+  
+   <div class="container-fluid">
+    <%- include('../path/header.ejs') %>
+
+ <div  id="mainContainer" class ="row">
+  
+   <div class="col-3">
+      <%- include('../path/navbar.ejs') %>
+
+   </div>
+   <div id="crateaMainContainer" style="height: 100%;"   class="col-9">
+      <div class="row"  >
+         <div style="color:black" class="col-12">
+     
+            <form  id="myform" action="/todos/updatenewdisaster/<%=newdisaster._id%>" method="POST" enctype="multipart/form-data" >
+               <h2>UPDATE NEW DISASTER <%=newdisaster.disaster %></h2>
+               <div style="margin-top: 20px;" class="form-group">
+                 <label for="tilte">Title:</label>
+                 <input type="text" class="form-control" value="<%=newdisaster.title %>"  name="title" required>
+              
+                 <label for="content">Description:</label>
+                 <textarea id="description" name="description" required></textarea>
+                 <script>
+                    
+                         CKEDITOR.replace('description' ,{
+                           extraPlugins:'filebrowser',
+                           filebrowserBrowserUrl:'list',
+                           filebrowserUploadMethod:'form',
+                           filebrowserUploadUrl:'/todos/uploaded',
+                         });
+                        
+                 </script>
+                   <label for="icon">Icon:</label>
+                   <input type="file" class="form-control" name="img" required />
+                   <label for="datepost">Start Date:</label>
+                   <input type="date" class="form-control" name="startdate" required />
+                   <label for="datepost">End Date:</label>
+                   <input type="date" class="form-control" name="enddate"/>
+                   <div id="output">
+                    <div>Province:</div>
+                    <input type="text" id="outputprovince" name="province" readonly>
+                   <div> Coordinates:</div>
+                   <input  type="text" id="outputcoor" readonly>
+                   <div> District of Province</div>
+                   <input  type="text" id="outputdistrictofprovince" readonly>
+
+                   <input type="hidden" id="coorinput" name="coordinate" value="">
+
+                   <button type="button" style="margin-left: 10px;" id="deleteoutput">Xoá</button>
+                 
+
+                   </div>
+                   <label for="country">Longitude for province</label>
+                   <input type="number" class="form-control" id="longitude">
+                   <label for="country">Latitude for provice</label>
+                   <input type="number" class="form-control" id="latitude">
+                   <div id="divdistrict">
+                    <div>District :</div>
+                    <input type="text" id="outputdistrict"  readonly>
+                    <input type="hidden" id="outputsavedistrict" name="district" readonly>
+
+                   <button type="button" style="margin-left: 10px;" id="deleteoutputdistrict">Xoá</button>
+                 
+
+                   </div>
+                    <label for="province">Province:</label>
+                   <select  id="province" >
+                    <option value="">--Select Province--</option>
+                     <% if (country != '') { %>
+                       <%
+                       country.forEach((row,index)=>{%>
+                          <option value="<%=row.province %>"><%= row.provincedetail%></option>
+                        
+                      <%})
+                      %>
+  
+                     <% } %>
+                        </select>
+
+                        <label for="district">District:</label>
+
+                        <select id="district">
+                          <option value="">--Select Districts--</option>
+                          
+                          </select>
+                          <button  type="button" id="submitDistrict">Select District</button>
+
+                        <button  type="button" id="submitButton">Save</button>
+   
+                        <script>
+      
+        var valuesArray =  [];
+        let coordinatesArray = [];
+        let valuesArrayDistrict=[]
+        let valueSaveDistrict=[]
+
+        document.getElementById('submitDistrict').addEventListener('click', function() {
+          
+          const selectedValue = document.getElementById('district').value;
+          console.log(selectedValue)
+          if (selectedValue) {
+                // Thêm giá trị vào mảng
+                valuesArrayDistrict.push(selectedValue);
+              
+                
+              }
+              const outputDiv = document.getElementById('divdistrict');
+              if (valuesArrayDistrict.length !== 0) {
+                    outputDiv.style.display = 'flex'; 
+                }
+              document.getElementById('outputdistrict').value =  valuesArrayDistrict.map(item => item.trim()).join(',');
+           
+        })
+        document.getElementById('deleteoutputdistrict').addEventListener('click', function() {
+            if (valuesArrayDistrict.length > 0 ) {
+                valuesArrayDistrict.pop(); // Xóa giá trị cuối cùng trong mảng
+        
+                console.log('Mảng giá trị sau khi xóa:', valuesArrayDistrict);
+                console.log('Mảng giá trị sau khi xóa:', valueSaveDistrict);
+               
+               if(valuesArrayDistrict.length ===0){
+                document.getElementById('divdistrict').style.display= 'none'
+
+               }
+                updateOutput(); // Cập nhật hiển thị
+            } else {
+           console.log('Mảng này rỗng')
+              }
+  
+});
+
+        document.getElementById('submitButton').addEventListener('click', function() {
+            // Lấy giá trị từ select
+            const selectedValue = document.getElementById('province').value;
+            const pronvice = document.getElementById('province').value;
+            const latitude =  document.getElementById('latitude').value.trim();
+            const longitude = document.getElementById('longitude').value.trim();
+            const district = document.getElementById('outputdistrict').value.trim();
+          
+            // Kiểm tra nếu giá trị không rỗng
+            if (selectedValue && latitude && longitude) {
+                // Thêm giá trị vào mảng
+                valuesArray.push(selectedValue);
+                valueSaveDistrict.push(district)
+                coordinatesArray.push({longitude,latitude,district,pronvice})
+               
+                const outputDiv = document.getElementById('output');
+                 if (valuesArray.length !== 0) {
+                    outputDiv.style.display = 'flex'; 
+                }
+              
+                document.getElementById('outputprovince').value = valuesArray.map(item => item.trim()).join(',');
+                //  document.getElementById('outputselect').innerHTML = valuesArray.join(',');
+                document.getElementById('outputcoor').value = coordinatesArray.map(coord => 
+                `Latitude: ${coord.latitude}, Longitude: ${coord.longitude}`).join('; ');
+                document.getElementById('coorinput').value = JSON.stringify(coordinatesArray);
+                document.getElementById('outputdistrictofprovince').value = coordinatesArray.map(coord => 
+                `${coord.pronvice}: ${coord.district}`).join(';');
+                document.getElementById('outputsavedistrict').value =  valueSaveDistrict.map(item => item.trim()).join(',');
+
+                 valuesArrayDistrict = []
+                document.getElementById('outputdistrict').value=''
+                document.getElementById('latitude').value='';
+                document.getElementById('longitude').value='';
+                document.getElementById('province').value = '';
+                document.getElementById('divdistrict').style.display= 'none'
+            } else {
+                console.log('Vui lòng chọn giá trị!');
+            }
+            console.log('Mảng giá trị hiện tại:', valuesArray);  
+           console.log('Mảng Kinh độ hiện tại',coordinatesArray)
+            
+
+})
+
+document.getElementById('deleteoutput').addEventListener('click', function() {
+            if (valuesArray.length > 0 && coordinatesArray.length > 0) {
+                valuesArray.pop(); // Xóa giá trị cuối cùng trong mảng
+                coordinatesArray.pop()
+                console.log('Mảng giá trị sau khi xóa:', valuesArray);
+                console.log('Mảng toạ độ sau khi xoá:', coordinatesArray)
+                // document.getElementById('outputselect').innerHTML = valuesArray.join(',');
+                document.getElementById('outputprovince').value = valuesArray.join(',');
+                document.getElementById('outputcoor').value = coordinatesArray.map(coord => 
+                `Latitude: ${coord.latitude}, Longitude: ${coord.longitude}`).join('; ');
+                document.getElementById('coorinput').value = JSON.stringify(coordinatesArray);
+
+                document.getElementById('latitude').value='';
+                document.getElementById('longitude').value='';
+                document.getElementById('province').value = '';
+               if(valuesArray.length ===0){
+                document.getElementById('output').style.display= 'none'
+
+               }
+                updateOutput(); // Cập nhật hiển thị
+            } else {
+           console.log('Mảng này rỗng')
+              }
+  
+});
+
+      let distirct= []
+
+document.getElementById('province').addEventListener('change', function() {
+ 
+    var selectedValue = this.value;
+
+   
+    fetch('/todos/getapidistrict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            selectedValue: selectedValue
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+       distirct= data.data;
+      console.log(distirct);
+      updateDistrictSelect(distirct)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+ 
+function updateDistrictSelect(distirct) {
+            const districtSelect = document.getElementById('district');
+            districtSelect.innerHTML = '<option value="">--Select Districts--</option>'; // Reset lại thẻ select
+
+            // Thêm các huyện vào thẻ select
+            distirct.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district.district;
+                option.textContent = district.districtdetail;
+                districtSelect.appendChild(option);
+            });
+        }
+
+    </script>
+
+
+                
+            <div id="divscope" >
+                  <label for="scope">Scope:</label>
+                  <input type="text" class="form-control" name="scope" />
+              </div>
+                  <label for="disaster">Select Disaster</label>
+                  <select name="disaster" id="disaster">
+                     <% if (country != '') { %>
+                       <%
+                       disaster.forEach((row,index)=>{%>
+                          <option value="<%=row.disaster %>"><%= row.disaster%></option>
+                      <%})
+                      %>
+  
+                     <% } %>
+                  </select>
+        
+                  <div id="output1">
+                    <div>Region:</div>
+                    <input type="text" id="outputregion" name="region" readonly>
+
+                   
+                   <button type="button" style="margin-left: 10px;" id="deleteoutput1">Xoá</button>
+                 
+
+                   </div>
+
+                  <label for="region">Select Region</label>
+                  <select  id="region">
+                    <option value="">--Select Region--</option>
+                    <option value="Trung du và miền núi phía Bắc">Trung du và miền núi phía Bắc</option>
+                    <option value="Đồng Bằng Sông Hồng">Đồng Bằng Sông Hồng</option>
+                    <option value="Bắc Trung Bộ và Duyên hải miền Trung">Bắc Trung Bộ và Duyên hải miền Trung</option>
+                    <option value="Vùng Tây Nguyên">Vùng Tây Nguyên</option>
+                    <option value="Đông Nam Bộ"> Đông Nam Bộ</option>
+                    <option value="Vùng Đồng bằng sông Cửu Long">Vùng Đồng bằng sông Cửu Long</option>
+              </select>
+              <button  type="button" id="submitButton1">Select</button>
+
+              <script>
+      
+      var valuesArray1 =  [];
+      
+  
+
+      document.getElementById('submitButton1').addEventListener('click', function() {
+          // Lấy giá trị từ select
+          const selectedValue1 = document.getElementById('region').value;
+
+          // Kiểm tra nếu giá trị không rỗng
+          if (selectedValue1) {
+              // Thêm giá trị vào mảng
+              valuesArray1.push(selectedValue1);
+             
+             
+              const outputDiv1 = document.getElementById('output1');
+               if (valuesArray1.length !== 0) {
+                  outputDiv1.style.display = 'flex'; 
+              }
+            
+              document.getElementById('outputregion').value = valuesArray1.map(item => item.trim()).join(',');
+              //  document.getElementById('outputselect').innerHTML = valuesArray.join(',');
+          
+
+
+
+
+
+              document.getElementById('region').value = '';
+          } else {
+              console.log('Vui lòng chọn giá trị!');
+          }
+          console.log('Mảng giá trị hiện tại:', valuesArray1);  
+         
+          
+
+})
+
+document.getElementById('deleteoutput1').addEventListener('click', function() {
+          if (valuesArray1.length > 0) {
+              valuesArray1.pop(); // Xóa giá trị cuối cùng trong mảng
+              console.log('Mảng giá trị sau khi xóa:', valuesArray1);
+              // document.getElementById('outputselect').innerHTML = valuesArray.join(',');
+              document.getElementById('outputregion').value = valuesArray1.join(',');
+              document.getElementById('region').value = '';
+             if(valuesArray1.length ===0){
+              document.getElementById('output1').style.display= 'none'
+
+             }
+              updateOutput(); // Cập nhật hiển thị
+          } else {
+         console.log('Mảng này rỗng')
+            }
+
+});
+
+  </script>
+
+
+
+                  <label for="status">Select Status</label>
+                  <select name="status" id="status">
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Pass">Pass</option>
+              </select>
+              <script>
+               
+               document.getElementById('disaster').addEventListener('change', function() {
+         const selectedValue1 = document.getElementById('disaster').value;
+         console.log(selectedValue1)
+         if(selectedValue1 === "Earthquake" || selectedValue1 === "Flood" || selectedValue1 === "Landslide" ){
+         document.getElementById("divscope").style.display = "block";
+       }else{
+         document.getElementById("divscope").style.display = "none";
+       }
+
+       })
+
+    
+     </script> 
+                    </div>
+                    <button id="submitform" style="margin-top: 10px;" type="submit" class="btn btn-success">Upadte</button>
+               
+             </form>
+
+         </div>
+      </div>
+   </div>
+ 
+ </div>
+
+   </div>
+</body>
+</html>
+
+    
+
+   
+
+   </div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <link rel="stylesheet" href="/public/headerandnavbar.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/page/pagepostnew.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="/public/headerandnavbar.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+  
+   <div class="container-fluid">
+    <%- include('../path/header.ejs') %>
+
+ <div  id="mainContainer" class ="row">
+  
+   <div class="col-3">
+      <%- include('../path/navbar.ejs') %>
+
+   </div>
+   <div id="crateaMainContainer" style="height: 100%;" class="col-9">
+      <div class="row"  >
+         <div style="color:black," class="col-12">
+     
+            <form  action="/todos/updatenew/<%=news._id%>" method="POST" enctype="multipart/form-data" >
+               <h2>ADD NEW</h2>
+               <div style="margin-top: 20px;" class="form-group">
+                 <label for="tilte">Title:</label>
+                 <input type="text" class="form-control" value="<%=news.title%>" name="title" required>
+                 <label for="description">Description:</label>
+                 <input type="text" class="form-control" value="<%=news.description%>" name="description" required>
+                 <label for="content">Content:</label>
+                 <textarea name="content" value="<%=news.content%>" required></textarea>
+                 <script>
+                         CKEDITOR.replace('content' ,{
+                           extraPlugins:'filebrowser',
+                           filebrowserBrowserUrl:'list',
+                           filebrowserUploadMethod:'form',
+                           filebrowserUploadUrl:'/todos/uploaded',
+                         });
+                 </script>
+                   <label for="tilte">Img:</label>
+                   <input type="file" class="form-control"  name="img" required />
+                   <label for="datepost">Date Post:</label>
+                   <input type="date" class="form-control" value="<%=news.datepost%>" name="datepost" required />
+                   <div id="output">
+                     <div>Province:</div>
+                     <input type="text" id="outputprovince" name="province" readonly>
+ 
+                    
+                    <button type="button" style="margin-left: 10px;" id="deleteoutput">Xoá</button>
+                  
+ 
+                    </div>
+                   <label for="province">Province:</label>
+                    <select  id="province" >
+                     <option value="">--Select Province--</option>
+                      <% if (country != '') { %>
+                        <%
+                        country.forEach((row,index)=>{%>
+                           <option value="<%=row.province %>"><%= row.provincedetail%></option>
+                         
+                       <%})
+                       %>
+   
+                      <% } %>
+                         </select>
+
+                         <button  type="button" id="submitButton">Select</button>
+                         <script>
+       
+       var valuesArray =  [];
+       
+    
+    
+       document.getElementById('submitButton').addEventListener('click', function() {
+           // Lấy giá trị từ select
+           const selectedValue = document.getElementById('province').value;
+    
+           // Kiểm tra nếu giá trị không rỗng
+           if (selectedValue) {
+               // Thêm giá trị vào mảng
+               valuesArray.push(selectedValue);
+              
+              
+               const outputDiv = document.getElementById('output');
+                if (valuesArray.length !== 0) {
+                   outputDiv.style.display = 'flex'; 
+               }
+             
+               document.getElementById('outputprovince').value = valuesArray.map(item => item.trim()).join(',');
+               //  document.getElementById('outputselect').innerHTML = valuesArray.join(',');
+           
+    
+    
+    
+    
+    
+               document.getElementById('province').value = '';
+           } else {
+               console.log('Vui lòng chọn giá trị!');
+           }
+           console.log('Mảng giá trị hiện tại:', valuesArray);  
+          
+           
+    
+    })
+    
+    document.getElementById('deleteoutput').addEventListener('click', function() {
+           if (valuesArray.length > 0) {
+               valuesArray.pop(); // Xóa giá trị cuối cùng trong mảng
+               console.log('Mảng giá trị sau khi xóa:', valuesArray);
+               // document.getElementById('outputselect').innerHTML = valuesArray.join(',');
+               document.getElementById('outputprovince').value = valuesArray.join(', ');
+               document.getElementById('province').value = '';
+              if(valuesArray.length ===0){
+               document.getElementById('output').style.display= 'none'
+    
+              }
+               updateOutput(); // Cập nhật hiển thị
+           } else {
+          console.log('Mảng này rỗng')
+             }
+    
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+                  <label for="disaster">Select Disaster</label>
+                  <select name="disaster" id="disaster" value="<%=news.disaster%>"> 
+                     <% if (disaster!= '') { %>
+                       <%
+                       disaster.forEach((row,index)=>{%>
+                          <option value="<%=row.disaster %>"><%= row.disaster%></option>
+                      <%})
+                      %>
+  
+                     <% } %>
+                  </select>
+
+               </div>
+              
+               <button style="margin-top: 10px;" type="submit" class="btn btn-success">Add</button>
+             </form>
+
+         </div>
+      </div>
+   </div>
+ 
+ </div>
+
+   </div>
+</body>
+</html>
+
+    
+
+   
+
+   </div>
+</body>
+</html>

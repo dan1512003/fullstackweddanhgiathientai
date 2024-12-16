@@ -1,0 +1,103 @@
+.headerCardNews{
+
+    flex-direction: row;
+    
+     }
+    
+    .titleHeaderCardNews{
+    margin-left: 5px;
+    
+    }
+    .countryCardNews{
+       display: inline;
+       background-color: #E6ECEF;
+    }
+    
+    .titleCardNews{
+       display: inline;
+     color: #055372;
+      margin-left: 3px;
+    }
+     
+    .mainCardNews{
+       display: flex;
+       margin-top: 10px;
+    }
+    .imgHeaderCardNews{
+       height: 75px;
+       width: 65px;
+       background-color: red;
+    }
+    .descHeaderCardNews{
+       display: inline;
+       overflow: hidden;
+       max-width: 100%;
+       height: 55px;
+       margin-left: 20px;
+    }
+    .ulFooterCardNews{
+    
+      
+    
+        @media (max-width: 500px) {
+          display:block;
+          padding: 0;
+          margin: 0;
+          }
+     
+          @media (min-width: 500px) {
+             display: flex;
+             justify-content: space-evenly; 
+             flex-wrap: wrap;
+             gap: 10px;
+             padding: 0;
+             margin: 0;
+             }
+    
+    }
+    .liFooterCardNews{
+       display: flex;
+     
+       
+    }
+    .footerCardNews{
+    
+       @media (max-width: 500px) {
+         display:block;
+         }
+    
+         @media (min-width: 500px) {
+          display: flex;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+            }
+    }
+    .cardNews{
+       border-top: 1px solid#F3F5F7 ;
+       
+    }
+    .affectedprovince{
+      max-width: 200px;  
+      overflow: hidden;   
+      text-overflow: ellipsis; 
+      white-space: nowrap;
+     
+     }
+     .liFooterDisaster1{
+    
+      @media (max-width: 600px) {
+        display: flex;
+        flex-wrap:wrap ;
+        align-items: center;
+       
+        }
+   
+        @media (min-width: 600px) {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        
+           }
+        
+     }

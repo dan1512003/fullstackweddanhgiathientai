@@ -1,0 +1,58 @@
+.containerBottom{
+     background-color: #055372;
+     margin-top: auto;
+     display: flex;
+     flex-direction: column;
+     color: white;
+  
+    }
+    .navbarBottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+     
+    }
+    .ulBottom{
+        float: left;
+        display: flex;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+    }
+    .liBottom{
+        font-size: 13px;
+        font-weight: bold;
+        margin-top: 5px;
+      
+    }
+    .Social {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+      }
+      .rightReserved{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid white;
+      }
+      .iconSocial{
+        color: white;
+      }
+      .cateBottom{
+        color: white;
+      }
+      .infoGee{
+        display: flex;
+        
+      }
+      .logo{
+     
+        margin-right: 10px;
+       
+      }
+      .description{
+        margin-top:30px;
+      }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <link rel="stylesheet" href="/public/headerandnavbar.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/page/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="/public/headerandnavbar.js"></script>
+   
+</head>
+
+<body >
+  
+   <div  class="container-fluid">
+    <%- include('../path/header.ejs') %>
+
+
+ <div id="mainContainer"   class="row">
+   <div class="col-3">
+      <%- include('../path/navbar.ejs') %>
+
+   </div>
+   <div id="crateaMainContainer" class="col-9">
+      <div class="row"  >
+         <div style="color:black" class="col-12">
+            <div class="container-lg">
+               <div class="table-responsive">
+                   <div class="table-wrapper">
+                       <div class="table-title">
+                           <div class="row">
+                               <div class="col-sm-12"><h2>User</h2></div>
+                              
+                           </div>
+                       </div>
+
+        
+
+
+                 <% if (items!='') { %>
+                     <table class="table table-bordered">
+                           <thead>
+                               <tr>
+                                   <th>id</th>
+                                   <th>User name</th>
+                                   <th>gmail</th>
+                                   <th>password</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                             <%
+                            items.forEach((row,index)=>{%>
+                            
+                             <tr>
+                                   <td><%=index+skip%></td>
+                                   <td><%= row.username%></td>
+                                   <td><%= row.gmail%></td>
+                                   <td><%= row.password%></td>
+                               </tr>
+
+
+                             <%})
+                            %>
+                             
+                   
+                           </tbody>
+                       </table>
+<% } else { %>
+ <h1 class="text-center text-secondary mt-5">No User find in the database</h1>
+<% } %>
+
+           
+<div class="pagination">
+     <% if (currentPage > 1) { %>
+         <a href="?page=<%= currentPage - 1 %>">Trang trước</a>
+     <% } %>
+
+     <% for (let i = 1; i <= totalPages; i++) { %>
+         <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+     <% } %>
+
+     <% if (currentPage < totalPages) { %>
+         <a href="?page=<%= currentPage + 1 %>">Trang sau</a>
+     <% } %>
+ </div>
+
+
+                   </div>
+               </div>
+           </div>  
+
+
+         </div>
+      </div>
+   </div>
+      
+
+ 
+ </div>
+
+   </div>
+</body>
+</html>

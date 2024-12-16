@@ -1,0 +1,61 @@
+.border{
+
+  
+    border-bottom: 1px solid red;
+    height:2px ;
+  
+}
+
+.main{
+    background-color: aliceblue; 
+    display: grid;
+    /* background-color: aqua; */
+    grid-template-columns: 1fr 11fr;
+}
+.product{
+    width: 100%;
+    @media (max-width: 720px) {
+      display: none;
+      display:block;
+      }
+
+      @media (min-width: 720px) {
+         display: none;
+         display:grid;
+         grid-template-columns:3fr 1fr;
+         }
+
+    
+    
+}
+.active{
+
+    height: 20px;
+    width: 5px;
+    background-color: red;
+
+   
+ }
+ .cateLiAbout{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+ }
+ .cateUlAbout{
+   display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+ }
+ .titleCate{
+    display: flex;
+  
+ }
+ .activeTitleCate{
+    height: 20px;
+    width: 5px;
+    background-color: red;
+    margin-top: 22px;
+ }
+ 

@@ -1,0 +1,294 @@
+
+.containerDisasters{
+    display: block;
+}
+.border{
+
+    border-bottom: 1px solid red;
+    height:2px ;
+  
+}
+
+.main{
+
+    display: grid;
+ 
+    grid-template-columns: 2fr 8fr 2fr;
+}
+
+.product{
+    width: 100%;
+    @media (max-width: 760px) {
+        display: none;
+        display:block;
+        }
+  
+        @media (min-width: 760px) {
+           display: none;
+           display:grid;
+           grid-template-columns: 1fr 4fr;
+           gap: 10px;
+           }
+}
+
+ cateLiPageNews{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+ }
+ .cateUlPageNews{
+   display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+ }
+ .titleCate{
+    display: flex;
+  
+ }
+ .activeTitleCate{
+    height: 20px;
+    width: 5px;
+    background-color: red;
+    margin-top: 22px;
+ }
+ .catePPageNews{
+    font-weight: bold;
+ }
+ .containerMain1{
+    border-bottom: 1px solid #F3F5F7;
+ }
+ .containerMain2{
+    border-left: 1px solid #F3F5F7;
+    border-bottom: 1px solid #F3F5F7;
+ }
+ .buttonFilterNews{
+    display: flex;
+    margin-left: 5px;
+    padding: 0px;
+    background-color: #FAFBFB;
+ 
+ }
+ .ulFilterNews{
+
+    margin: 0px;
+    padding: 0px;
+ }
+ .iconFilterNews{
+   
+    background-color:#E6ECEF ;
+    border-radius: 50%;
+    margin-top: 14px;
+ }
+ .liFilterNews{
+
+    margin-left: 4px;
+ }
+ .formFilterNews{
+    display: block;
+
+ }
+ .selectFilterNew{
+   width: 100%;
+ }
+ .buttonAll{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  
+ }
+ .HideFilter{
+    display: none;
+ }
+ .ShowFilter{
+    margin-left: 5px;
+    background-color:#FFFFFF;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+ }
+ .inputFilterNews
+ {
+    width: 96%;
+    height: 20px;
+ }
+ .containerFilterNews{
+    display: flex;
+ }
+ .pFilterNews{
+    margin-left: 2px;
+ }
+ .buttonFilter{
+   display: flex;
+   padding: 0px;
+   margin: 0px;
+   background-color: #FAFBFB;
+ }
+ .ulGetFilterCountryNews{
+    margin: 0px;
+    padding: 0px;
+    margin-top:15px ;
+ }
+ .ulGetFilterDisasterNews{
+    margin: 0px;
+    padding: 0px;
+    margin-top:15px ;
+ }
+ .ulGetFilterContentNews{
+    margin: 0px;
+    padding: 0px;
+    margin-top:15px ;
+ }
+ .butGetFilterCountryNews{
+  background-color:#FFFFFF ;
+  border-left: 2px solid red;
+  border-top: 1px solid#F3F5F7 ;
+  border-right: 1px solid#F3F5F7 ;
+  border-bottom: 1px solid#F3F5F7 ;
+ }
+ .getFilterCountryNews{
+    display: flex;
+    
+   
+ }
+ .pGetFilteItemCountryNews{
+    margin-left: 3px;
+    font-weight: bold;
+
+   
+ }
+
+ .liGetFilterCountryNews{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E6ECEF;
+    height:20px;
+    width: 100%;
+    margin-left: 4px;
+ }
+ .allButtonGetFilterNews{
+    margin-top: 15px;
+    border-top: 1px solid#F3F5F7 ;
+    border-bottom: 1px solid#F3F5F7 ;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+ }
+
+ 
+    
+    .mainCarDisater{
+      display: flex;
+      margin-top: 10px;
+    
+      align-items: center;
+   }
+   .imgHeaderCardDisaster{
+      height: 30px;
+      width: 30px;
+      background-color: red;
+   }
+   .descHeaderCardDisater{
+      
+      overflow: hidden;
+      max-width: 100%;
+      height: 20px;
+  
+     
+   }
+   .ulFooterCarDisaster{
+      @media (max-width: 600px) {
+         display:block;
+         padding: 0;
+         margin: 0;
+    
+         }
+    
+         @media (min-width: 600px) {
+            display: flex;
+            justify-content: space-evenly; 
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            }
+     
+   }
+   .liFooterDisaster{
+    
+    @media (max-width: 600px) {
+      display: flex;
+      flex-wrap:wrap ;
+      align-items: center;
+      }
+ 
+      @media (min-width: 600px) {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+      
+   }
+   .liFooterDisaster1{
+    
+      @media (max-width: 600px) {
+        display: flex;
+        flex-wrap:wrap ;
+        align-items: center;
+       
+        }
+   
+        @media (min-width: 600px) {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        
+           }
+        
+     }
+     .affectedprovince{
+      max-width: 200px;  
+      overflow: hidden;   
+      text-overflow: ellipsis; 
+      white-space: nowrap;
+     }
+   .footerCardDisater{
+      display: flex;
+      padding: 0;
+      margin: 0;
+   }
+   .cardDisater{
+      border-top: 1px solid#F3F5F7 ;
+   }
+   .statusOngoinCarDisaster{
+      border-radius: 50%;
+      background-color: red;
+      width: 10px;
+      height: 10px;
+
+   }
+   .statusAlertCardNews{
+
+      border-radius: 50%;
+      background-color: yellow;
+      width: 10px;
+      height: 10px;
+
+   }
+   .statusCardNews{
+      margin-left: 3px;
+   }
+   .apiGoogleEarthEngine{
+      height: 400px;
+   }
+   .suggestions{
+      position: absolute;
+      background-color: white;
+      color: black;
+      border:1px solid #ccc;
+      width: 98%; 
+      z-index: 1;
+   }
+   

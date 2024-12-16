@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<style>
+  .container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items:center ;
+    
+  }
+  .login-form{
+    display: block;
+    justify-items: center;
+    max-width: 400px;
+  
+  }
+  
+input{
+    border: 0;
+    outline: 0;
+}
+.form-input{
+    display: flex;
+    border-bottom: 1px solid green;
+    width: 400px;
+    height: 50px;
+    margin-top: 2px;
+  justify-content: space-between;
+}
+#hide{
+    display: none;
+    
+}
+form{
+    justify-items: center;
+}
+#submit-form{
+    width: 400px;
+    background-color:#3A4FE5 ;
+    border: 0; height: 30px;   
+}
+#submit-form:hover{
+    color: red;
+}
+</style>
+<body>
+    <div class="container">
+<div class="login-form">
+    <h1>Login</h1>
+    <form   action="/todos/signin" method="POST" enctype="multipart/form-data">
+    <div class="form-input">
+       
+        <input   type="text" class="inputField" name="username" placeholder="User name" required>
+    </div>
+    <%
+    if(errorusername){%>
+           <div class="message-error">
+           <strong><%=errorusername  %></strong>
+       </div>
+         
+    <%}
+    %>
+    <div class="form-input">
+        <input    type="text" class="inputField" name="gmail"  placeholder="Gmail" required>
+    </div>
+    <%
+    if(errorgmail){%>
+           <div class="message-error">
+           <strong><%=errorgmail  %></strong>
+       </div>
+         
+    <%}
+    %>
+    <div class="form-input">
+        <input    type="password" class="inputField"  id="password" name="password" placeholder="Password" required>
+        <button id="show" style="background-color: white;border: 0;"><i class="fa-regular fa-eye-slash"></i></button>
+        <button id="hide" style="background-color: white;border: 0;"><i class="fa-regular fa-eye"></i></button>
+    </div>
+    <%
+    if(errorpassword){%>
+           <div class="message-error">
+           <strong><%=errorpassword  %></strong>
+       </div>
+         
+    <%}
+    %>
+
+    <p><a  href="/todos/fogotpassword">Fogot Password</a></p>
+    <button id="submit-form"  type="submit"> Login</button>
+        <p>Don't have an account?   <a  href="/todos/signup">Signup</a></p>
+    
+    <script>
+        $(document).ready(function(){
+            $('#show').click(function(){
+                    $('#password').attr('type', 'text');
+                    $('#show').toggle();
+                    $('#hide').toggle();
+                
+            });
+        });
+        $(document).ready(function(){
+            $('#hide').click(function(){
+                    $('#password').attr('type', 'password');
+                    $('#show').toggle();
+                    $('#hide').toggle();
+                
+            });
+        });
+     
+        $(document).ready(function() {
+  
+  $('.inputField').on('input', function() {
+   
+    var anyInputHasValue = $('.inputField').toArray().some(input => $(input).val() !== "");
+    
+    
+    if (anyInputHasValue) {
+      $('.message-error').hide();
+    } 
+  });
+});
+    </script>
+    </form>
+</div>
+    </div>
+   
+</body>
+</html>

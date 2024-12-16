@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <link rel="stylesheet" href="/public/headerandnavbar.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/page/pageupdatetypedisaster.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="/public/headerandnavbar.js"></script>
+   
+</head>
+<body>
+  
+   <div class="container-fluid">
+    <%- include('../path/header.ejs') %>
+
+
+ <div  id="mainContainer" class="row">
+
+      <div class="col-3">
+         <%- include('../path/navbar.ejs') %>
+
+      </div>
+      <div id="crateaMainContainer"  class="col-9">
+         <div class="row"  >
+            <div style="color:black," class="col-12">
+        
+               <form  action="/todos/updatetypedisaster/<%=disaster._id %>" method="POST" enctype="multipart/form-data" >
+                  <h2>UPDATE DISASTER <%=disaster.disaster%> </h2>
+                  <div style="margin-top: 20px;" class="form-group">
+                    <label for="country">Disaster:</label>
+                    <input type="text" class="form-control" value="<%=disaster.disaster %>" name="disaster">
+                  </div>
+                 
+                  <button style="margin-top: 10px;" type="submit" class="btn btn-success">UPDATE</button>
+                </form>
+
+            </div>
+         </div>
+      </div>
+ </div>
+  
+
+
+ 
+
+
+
+    
+
+   
+
+   </div>
+</body>
+</html>
+
+    
+
+   
+
+   </div>
+</body>
+</html>
